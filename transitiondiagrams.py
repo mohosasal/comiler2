@@ -596,6 +596,24 @@ follow = {'Program': ["$"],
           'Arglistprime': [')'],
           'EPSILON': ['ID', ';', 'NUM', ']', '(', ')', ',', '{', '}', 'break', 'if', 'repeat', 'return', '<', '==', '+', '-', '*', '$']}
 
-terminals=[]
+terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
+             'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',
+             'Paramprime', 'Compoundstmt', 'Statementlist', 'Statement', 'Expressionstmt', 'Selectionstmt',
+             'Iterationstmt', 'Returnstmt', 'Returnstmtprime', 'Expression', 'B', 'H', 'Simpleexpressionzegond',
+             'Simpleexpressionprime', 'C', 'Relop', 'Additiveexpression', 'Additiveexpressionprime',
+             'Additiveexpressionzegond', 'D', 'Addop', 'Term', 'Termprime', 'Termzegond', 'G', 'Factor',
+             'Varcallprime', 'Varprime', 'Factorprime', 'Factorzegond', 'Args', 'Arglist', 'Arglistprime']
+
 non_terminals=[]
-starter_of_non_terminals=dict()
+
+starter_of_non_terminals= {'Program': 0, 'Declarationlist': 2, 'Declaration': 5, 'Declarationinitial': 8,
+                            'Declarationprime': 11, 'Vardeclarationprime': 13, 'Fundeclarationprime': 18,
+                            'Typespecifier': 23, 'Params': 25, 'Paramlist': 30, 'Param': 34, 'Paramprime': 37,
+                            'Compoundstmt': 40, 'Statementlist': 45, 'Statement': 48, 'Expressionstmt': 50,
+                            'Selectionstmt': 54, 'Iterationstmt': 62, 'Returnstmt': 69, 'Returnstmtprime': 72,
+                            'Expression': 75, 'B': 78, 'H': 83, 'Simpleexpressionzegond': 87,
+                            'Simpleexpressionprime': 90, 'C': 93, 'Relop': 96, 'Additiveexpression': 99,
+                            'Additiveexpressionprime': 102, 'Additiveexpressionzegond': 105, 'D': 108, 'Addop': 112,
+                            'Term': 114, 'Termprime': 117, 'Termzegond': 120, 'G': 123, 'Factor': 127,
+                            'Varcallprime': 132, 'Varprime': 136, 'Factorprime': 140, 'Factorzegond': 144,
+                            'Args': 148, 'Arglist': 150, 'Arglistprime': 153}
