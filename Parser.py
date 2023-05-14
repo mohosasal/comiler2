@@ -121,7 +121,7 @@ class Parser:
 
 
 
-    def diagram_transition(self,this_node,state):
+    def diagram_transition(self,this_node,state,line):
 
 
 
@@ -138,24 +138,36 @@ class Parser:
 
 
         ###########################################first follow   (change the functionality of first follow set up)
+
+        rented=False
         for trans in transition_diagram[state]:
 
-            if token in first[trans]:
-                pass
+            if self.token in first[trans]:
+                rented=True
                 # add node to the tree in the left most child of the parrent
                 that_node=Node(trans,parent=this_node)
-                if trans is not terminal:
-                    self.diagram_transition(that_node,first_state_of_node,token)
+                if trans is not terminals:
+                    self.diagram_transition(that_node,first_state_of_node,token,trans)
                     #getting next token?
-                    self.diagram_transition(this_node,next_state_of_this_state,next_token)
+                    self.diagram_transition(this_node,next_state_of_this_state,next_token,line)
 
                 else:
                     #token= get next token
                     return
 
 
-            elif "epsilon"==trans:  # ( the error handling and epsilon is incorrect
+
+        if rented==False:  # error handling
+
+            if token not in follow[line]:
                 pass
+                #illegal token message
+                #start over from this line
+            else:
+                #missing line
+                #exit this line
+
+
 
 
 
