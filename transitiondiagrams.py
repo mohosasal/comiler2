@@ -596,7 +596,7 @@ follow = {'Program': ["$"],
           'Arglistprime': [')'],
           'EPSILON': ['ID', ';', 'NUM', ']', '(', ')', ',', '{', '}', 'break', 'if', 'repeat', 'return', '<', '==', '+', '-', '*', '$']}
 
-terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
+non_terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
              'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',
              'Paramprime', 'Compoundstmt', 'Statementlist', 'Statement', 'Expressionstmt', 'Selectionstmt',
              'Iterationstmt', 'Returnstmt', 'Returnstmtprime', 'Expression', 'B', 'H', 'Simpleexpressionzegond',
@@ -604,7 +604,7 @@ terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 
              'Additiveexpressionzegond', 'D', 'Addop', 'Term', 'Termprime', 'Termzegond', 'G', 'Factor',
              'Varcallprime', 'Varprime', 'Factorprime', 'Factorzegond', 'Args', 'Arglist', 'Arglistprime']
 
-non_terminals=[]
+terminals=[]
 
 starter_of_non_terminals= {'Program': 0, 'Declarationlist': 2, 'Declaration': 5, 'Declarationinitial': 8,
                             'Declarationprime': 11, 'Vardeclarationprime': 13, 'Fundeclarationprime': 18,

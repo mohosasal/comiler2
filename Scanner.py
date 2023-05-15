@@ -57,6 +57,13 @@ symbol_table = keywords.copy()
 
 class Scanner:
 
+
+    def __int__(self):
+        self.index=0
+        self.str_line=1
+        self.state=0
+
+
     @staticmethod
     def dfa_transition(state_number, transition):
         transition_index = action_to_action_number[transition]
