@@ -15,5 +15,7 @@ class Compiler:
         scanner=Scanner("input.txt")
         parser=Parser(scanner)
 
+        parser.diagram_transition(parser.main_node,"Program")
+
 
 
