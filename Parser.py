@@ -57,15 +57,13 @@ class Parser:
 
                     return
 
-
-
-                # where is the epsilon transition?!
-
-
-
         if rented==False:  # error handling
+            if 'epsilon' in transitiondiagrams.transition_diagrams[line][state].keys():
+                rented = True
+                that_node=Node('epsilon',parent=this_node)
+                self.diagram_transition(this_node, transitiondiagrams.transition_diagrams[line][state]['epsilon'], line)
 
-            if self.token not in transitiondiagrams.follow[line]:
+            elif self.token not in transitiondiagrams.follow[line]:
 
                 #illegal token message
 
