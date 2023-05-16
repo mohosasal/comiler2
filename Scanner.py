@@ -69,10 +69,6 @@ class Scanner:
 
 
 
-    def reader(self):
-
-        #responsible to change the index,str line and state and called in the get next token function
-
 
 
     def dfa_transition(state_number, transition):
@@ -148,4 +144,12 @@ class Scanner:
                     symbol_table.append(self.str_line[self.index:next_index])
             else:
                 token_string = ""
+        if state_type == "non_terminal":
+            self.state = 12
+        else: self.state = 0
+        if next_index >= len(self.str_line) - 1:
+            self.index = 0
+            self.str_line += 1
+        else:
+            self.index = next_index
         return next_index, (token_string, self.str_line[self.index:next_index])
