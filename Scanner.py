@@ -58,20 +58,30 @@ symbol_table = keywords.copy()
 class Scanner:
 
 
-    def __int__(self):
+    def __int__(self,file_to_read):
         self.index=0
         self.str_line=1
         self.state=0
+        f = open(file_to_read, "r")
+        self.file = f.read().split("\n")
+        self.tokens = dict()
 
 
-    @staticmethod
+
+
+    def reader(self):
+
+        #responsible to change the index,str line and state and called in the get next token function
+
+
+
     def dfa_transition(state_number, transition):
         transition_index = action_to_action_number[transition]
         new_state = dfa_matrix[state_number][transition_index]
         return new_state
 
-    @staticmethod
-    def get_next_token(index, str_line, state):
+
+    def get_next_token(self):
         digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
                     "u",
@@ -80,13 +90,13 @@ class Scanner:
                     'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         symbols = [";", ":", ",", "[", "]", "(", ")", "{", "}", "+", "-", "<"]
         whitespace_ascii_codes = [32, 10, 13, 9, 11, 12]
-        next_index = index
+        next_index = self.index
         while True:
             if state_number_to_state[state][1] != "non_terminal":
                 break
-            if next_index == len(str_line):
+            if next_index == len(self.str_line):
                 break
-            character = str_line[next_index]
+            character = self.str_line[next_index]
             if character in digits:
                 action = "digit"
             elif character in alphabet:
@@ -114,7 +124,7 @@ class Scanner:
                 token_string = 'Invalid input'
             else:
                 token_string = state_string
-            print(token_string, str_line[index:next_index])
+            print(token_string, self.str_line[self.index:next_index])
         elif state_type == "non_terminal":
             token_string = 'Unclosed comment'
         elif state_type == "terminal":
@@ -122,7 +132,7 @@ class Scanner:
                 next_index -= 1
                 token_string = state_string
             elif state_string == "valid_comment" or state_string == "whitespace":
-                return Scanner.get_next_token(next_index, str_line, 0)
+                return Scanner.get_next_token(next_index, self.str_line, 0)
             elif state_string == "SYMBOL":
                 token_string = state_string
             elif state_string == "symbol_with_lookahead":
@@ -130,12 +140,12 @@ class Scanner:
                 token_string = "SYMBOL"
             elif state_string == "valid_variable":
                 next_index -= 1
-                if str_line[index:next_index] in keywords:
+                if self.str_line[self.index:next_index] in keywords:
                     token_string = "KEYWORD"
                 else:
                     token_string = "ID"
-                if str_line[index:next_index] not in symbol_table:
-                    symbol_table.append(str_line[index:next_index])
+                if self.str_line[self.index:next_index] not in symbol_table:
+                    symbol_table.append(self.str_line[self.index:next_index])
             else:
                 token_string = ""
-        return next_index, (token_string, str_line[index:next_index])
+        return next_index, (token_string, self.str_line[self.index:next_index])

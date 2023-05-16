@@ -14,10 +14,11 @@ import transitiondiagrams
 
 class Parser:
 
-    def __init__(self ,node_0,parser):
+    def __init__(self ,scanner):
         self.main_node =Node("Program")
-        self.scanner = Scanner.Scanner()
+        self.scanner =scanner
         self.token=""
+        self.messages=[]
 
 
 
@@ -43,14 +44,14 @@ class Parser:
 
         rented=False
         for trans in transitiondiagrams.transition_diagrams[line][state].keys():
-            if self.token in first[trans]:
+            if self.token in transitiondiagrams.first[trans]:
                 rented=True
-                # add node to the tree in the left most child of the parrent
+                # add node to the tree in the left most child of the parent
                 that_node=Node(trans,parent=this_node)
                 if trans in transitiondiagrams.non_terminals:
-                    self.diagram_transition(that_node,transitiondiagrams.starter_of_non_terminals[trans],self.token,trans)
+                    self.diagram_transition(that_node,transitiondiagrams.starter_of_non_terminals[trans],trans)
                     #getting next token?
-                    self.diagram_transition(this_node,transitiondiagrams.transition_diagrams[line][state][self.token],self.token,line)
+                    self.diagram_transition(this_node,transitiondiagrams.transition_diagrams[line][state][self.token],line)
                 else:
                     self.token = self.scanner.get_next_token()
 
@@ -58,15 +59,34 @@ class Parser:
 
 
 
+                # where is the epsilon transition?!
+
+
+
         if rented==False:  # error handling
 
-            if token not in follow[line]:
-                pass
+            if self.token not in transitiondiagrams.follow[line]:
+
                 #illegal token message
+
+                error_message="illegal"+" "+self.token
+                self.messages.append(error_message)
+
                 #start over from this line
+
+                self.token = self.scanner.get_next_token()
+                self.diagram_transition(this_node, transitiondiagrams.starter_of_non_terminals[line],line)
+
             else:
+
                 #missing line
+
+                error_message="missing"+" "+line
+                self.messages.append(error_message)
+
                 #exit this line
+
+                #fill this gap!
 
 
 

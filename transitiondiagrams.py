@@ -20,7 +20,7 @@ transition_diagrams = {
             'Declarationinitial': 6
         },
         6: {
-           'Declarationprime': 7
+            'Declarationprime': 7
         },
         7: {}
     },
@@ -186,7 +186,7 @@ transition_diagrams = {
             'Expression': 57
         },
         57: {
-          ')': 58
+            ')': 58
         },
         58: {
             'Statement': 59
@@ -501,10 +501,7 @@ transition_diagrams = {
     }
 }
 
-
-
-
-first= {'Program': ['int', 'void', '0'],
+first = {'Program': ['int', 'void', '0'],
          'Declarationlist': ['int', 'void', '0'],
          'Declaration': ['int', 'void'],
          'Declarationinitial': ['int', 'void'],
@@ -555,14 +552,17 @@ follow = {'Program': ["$"],
           'Declaration': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
           'Declarationinitial': [';', '[', '(', ')', ','],
           'Declarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
-          'Vardeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
-          'Fundeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
+          'Vardeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
+                                  '$'],
+          'Fundeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
+                                  '$'],
           'Typespecifier': ['ID'],
           'Params': [')'],
           'Paramlist': [')'],
           'Param': [')', ','],
           'Paramprime': [')', ','],
-          'Compoundstmt': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return', '$'],
+          'Compoundstmt': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'else', 'repeat', 'until',
+                           'return', '$'],
           'Statementlist': ['}'],
           'Statement': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
           'Expressionstmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
@@ -594,19 +594,20 @@ follow = {'Program': ["$"],
           'Args': [')'],
           'Arglist': [')'],
           'Arglistprime': [')'],
-          'EPSILON': ['ID', ';', 'NUM', ']', '(', ')', ',', '{', '}', 'break', 'if', 'repeat', 'return', '<', '==', '+', '-', '*', '$']}
+          'EPSILON': ['ID', ';', 'NUM', ']', '(', ')', ',', '{', '}', 'break', 'if', 'repeat', 'return', '<', '==', '+',
+                      '-', '*', '$']}
 
 non_terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
-             'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',
-             'Paramprime', 'Compoundstmt', 'Statementlist', 'Statement', 'Expressionstmt', 'Selectionstmt',
-             'Iterationstmt', 'Returnstmt', 'Returnstmtprime', 'Expression', 'B', 'H', 'Simpleexpressionzegond',
-             'Simpleexpressionprime', 'C', 'Relop', 'Additiveexpression', 'Additiveexpressionprime',
-             'Additiveexpressionzegond', 'D', 'Addop', 'Term', 'Termprime', 'Termzegond', 'G', 'Factor',
-             'Varcallprime', 'Varprime', 'Factorprime', 'Factorzegond', 'Args', 'Arglist', 'Arglistprime']
+                 'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',
+                 'Paramprime', 'Compoundstmt', 'Statementlist', 'Statement', 'Expressionstmt', 'Selectionstmt',
+                 'Iterationstmt', 'Returnstmt', 'Returnstmtprime', 'Expression', 'B', 'H', 'Simpleexpressionzegond',
+                 'Simpleexpressionprime', 'C', 'Relop', 'Additiveexpression', 'Additiveexpressionprime',
+                 'Additiveexpressionzegond', 'D', 'Addop', 'Term', 'Termprime', 'Termzegond', 'G', 'Factor',
+                 'Varcallprime', 'Varprime', 'Factorprime', 'Factorzegond', 'Args', 'Arglist', 'Arglistprime']
 
-terminals=[]
+terminals = []
 
-starter_of_non_terminals= {'Program': 0, 'Declarationlist': 2, 'Declaration': 5, 'Declarationinitial': 8,
+starter_of_non_terminals = {'Program': 0, 'Declarationlist': 2, 'Declaration': 5, 'Declarationinitial': 8,
                             'Declarationprime': 11, 'Vardeclarationprime': 13, 'Fundeclarationprime': 18,
                             'Typespecifier': 23, 'Params': 25, 'Paramlist': 30, 'Param': 34, 'Paramprime': 37,
                             'Compoundstmt': 40, 'Statementlist': 45, 'Statement': 48, 'Expressionstmt': 50,
