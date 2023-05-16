@@ -69,10 +69,6 @@ class Scanner:
 
 
 
-    def reader(self):
-
-        #responsible to change the index,str line and state and called in the get next token function
-
 
 
     def dfa_transition(state_number, transition):
