@@ -501,8 +501,19 @@ transition_diagrams = {
     }
 }
 
-first = {'Program': ['int', 'void', '0'],
-         'Declarationlist': ['int', 'void', '0'],
+
+#add epsilon to the first and terminal first
+
+
+def first(input):
+
+    if input in non_terminals:
+        return first_[input]
+    else:
+        return input
+
+first_ = {'Program': ['int', 'void', 'epsilon'],
+         'Declarationlist': ['int', 'void', 'epsilon'],
          'Declaration': ['int', 'void'],
          'Declarationinitial': ['int', 'void'],
          'Declarationprime': [';', '[', '('],
@@ -510,11 +521,11 @@ first = {'Program': ['int', 'void', '0'],
          'Fundeclarationprime': ['('],
          'Typespecifier': ['int', 'void'],
          'Params': ['int', 'void'],
-         'Paramlist': [',', '0'],
+         'Paramlist': [',', 'epsilon'],
          'Param': ['int', 'void'],
-         'Paramprime': ['[', '0'],
+         'Paramprime': ['[', 'epsilon'],
          'Compoundstmt': ['{'],
-         'Statementlist': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return', '0'],
+         'Statementlist': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return', 'epsilon'],
          'Statement': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return'],
          'Expressionstmt': ['ID', ';', 'NUM', '(', 'break'],
          'Selectionstmt': ['if'],
@@ -522,30 +533,29 @@ first = {'Program': ['int', 'void', '0'],
          'Returnstmt': ['return'],
          'Returnstmtprime': ['ID', ';', 'NUM', '('],
          'Expression': ['ID', 'NUM', '('],
-         'B': ['[', '(', '=', '<', '==', '+', '-', '*', '0'],
-         'H': ['=', '<', '==', '+', '-', '*', '0'],
+         'B': ['[', '(', '=', '<', '==', '+', '-', '*', 'epsilon'],
+         'H': ['=', '<', '==', '+', '-', '*', 'epsilon'],
          'Simpleexpressionzegond': ['NUM', '('],
-         'Simpleexpressionprime': ['(', '<', '==', '+', '-', '*', '0'],
-         'C': ['<', '==', '0'],
+         'Simpleexpressionprime': ['(', '<', '==', '+', '-', '*', 'epsilon'],
+         'C': ['<', '==', 'epsilon'],
          'Relop': ['<', '=='],
          'Additiveexpression': ['ID', 'NUM', '('],
-         'Additiveexpressionprime': ['(', '+', '-', '*', '0'],
+         'Additiveexpressionprime': ['(', '+', '-', '*', 'epsilon'],
          'Additiveexpressionzegond': ['NUM', '('],
-         'D': ['+', '-', '0'],
+         'D': ['+', '-', 'epsilon'],
          'Addop': ['+', '-'],
          'Term': ['ID', 'NUM', '('],
-         'Termprime': ['(', '*', '0'],
+         'Termprime': ['(', '*', 'epsilon'],
          'Termzegond': ['NUM', '('],
-         'G': ['*', '0'],
+         'G': ['*', 'epsilon'],
          'Factor': ['ID', 'NUM', '('],
-         'Varcallprime': ['[', '(', '0'],
-         'Varprime': ['[', '0'],
-         'Factorprime': ['(', '0'],
+         'Varcallprime': ['[', '(', 'epsilon'],
+         'Varprime': ['[', 'epsilon'],
+         'Factorprime': ['(', 'epsilon'],
          'Factorzegond': ['NUM', '('],
-         'Args': ['ID', 'NUM', '(', '0'],
+         'Args': ['ID', 'NUM', '(', 'epsilon'],
          'Arglist': ['ID', 'NUM', '('],
-         'Arglistprime': [',', '0'],
-         'EPSILON': ['0']}
+         'Arglistprime': [',', 'epsilon']}
 
 follow = {'Program': ["$"],
           'Declarationlist': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
@@ -593,9 +603,7 @@ follow = {'Program': ["$"],
           'Factorzegond': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
           'Args': [')'],
           'Arglist': [')'],
-          'Arglistprime': [')'],
-          'EPSILON': ['ID', ';', 'NUM', ']', '(', ')', ',', '{', '}', 'break', 'if', 'repeat', 'return', '<', '==', '+',
-                      '-', '*', '$']}
+          'Arglistprime': [')']}
 
 non_terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
                  'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',

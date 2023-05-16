@@ -42,7 +42,7 @@ class Parser:
         for transition in td.transition_diagrams[line][state].keys():
 
             #checking for transtitions first without epsilon
-            if self.token in td.first[transition] :
+            if self.token in td.first(transition) :
                 rented1=True
                 that_node = Node(transition, parent=this_node)
 
@@ -61,7 +61,7 @@ class Parser:
 
             for transition in td.transition_diagrams[line][state].keys():
 
-                if "epsilon" in td.first[transition] and self.token in td.follow[transition]:
+                if "epsilon" in td.first(transition) and self.token in td.follow[transition]:
 
                     rented2=True
 
@@ -99,6 +99,9 @@ class Parser:
                 return
 
                 #exit this line
+
+
+            ################################## !!!!!!!!!!!!!!!!!   third error should be handled!
 
 
 
