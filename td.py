@@ -1,49 +1,49 @@
 transition_diagrams = {
     'Program': {
         0: {
-            'Declarationlist': 160
+            'Declaration-list': 160
         },
         160: {
             '$': 1
         },
         1: {}
     },
-    'Declarationlist': {
+    'Declaration-list': {
         2: {
             'Declaration': 3,
             'epsilon': 4
         },
         3: {
-            'Declarationlist': 4
+            'Declaration-list': 4
         },
         4: {}
     },
     'Declaration': {
         5: {
-            'Declarationinitial': 6
+            'Declaration-initial': 6
         },
         6: {
-            'Declarationprime': 7
+            'Declaration-prime': 7
         },
         7: {}
     },
-    'Declarationinitial': {
+    'Declaration-initial': {
         8: {
-            'Typespecifier': 9
+            'Type-specifier': 9
         },
         9: {
             'ID': 10
         },
         10: {}
     },
-    'Declarationprime': {
+    'Declaration-prime': {
         11: {
-            'Fundeclarationprime': 12,
-            'Vardeclarationprime': 12
+            'Fun-declaration-prime': 12,
+            'Var-declaration-prime': 12
         },
         12: {}
     },
-    'Vardeclarationprime': {
+    'Var-declaration-prime': {
         13: {
             ';': 17,
             '[': 14
@@ -59,7 +59,7 @@ transition_diagrams = {
         },
         17: {}
     },
-    'Fundeclarationprime': {
+    'Fun-declaration-prime': {
         18: {
             '(': 19
         },
@@ -70,11 +70,11 @@ transition_diagrams = {
             ')': 21
         },
         21: {
-            'Compoundstmt': 22
+            'Compound-stmt': 22
         },
         22: {}
     },
-    'Typespecifier': {
+    'Type-specifier': {
         23: {
             'int': 24,
             'void': 24
@@ -90,14 +90,14 @@ transition_diagrams = {
             'ID': 27
         },
         27: {
-            'Paramprime': 28
+            'Param-prime': 28
         },
         28: {
-            'Paramlist': 29
+            'Param-list': 29
         },
         29: {}
     },
-    'Paramlist': {
+    'Param-list': {
         30: {
             ',': 31,
             'epsilon': 33
@@ -106,20 +106,20 @@ transition_diagrams = {
             'Param': 32
         },
         32: {
-            'Paramlist': 33
+            'Param-list': 33
         },
         33: {}
     },
     'Param': {
         34: {
-            'Declarationinitial': 35
+            'Declaration-initial': 35
         },
         35: {
-            'Paramprime': 36
+            'Param-prime': 36
         },
         36: {}
     },
-    'Paramprime': {
+    'Param-prime': {
         37: {
             '[': 38,
             'epsilon': 39
@@ -129,42 +129,42 @@ transition_diagrams = {
         },
         39: {}
     },
-    'Compoundstmt': {
+    'Compound-stmt': {
         40: {
             '{': 41
         },
         41: {
-            'Declarationlist': 42
+            'Declaration-list': 42
         },
         42: {
-            'Statementlist': 43
+            'Statement-list': 43
         },
         43: {
             '}': 44
         },
         44: {}
     },
-    'Statementlist': {
+    'Statement-list': {
         45: {
             'Statement': 46,
             'epsilon': 47
         },
         46: {
-            'Statementlist': 47
+            'Statement-list': 47
         },
         47: {}
     },
     'Statement': {
         48: {
-            'Expressionstmt': 49,
-            'Compoundstmt': 49,
-            'Selectionstmt': 49,
-            'Iterationstmt': 49,
-            'Returnstmt': 49
+            'Expression-stmt': 49,
+            'Compound-stmt': 49,
+            'Selection-stmt': 49,
+            'Iteration-stmt': 49,
+            'Return-stmt': 49
         },
         49: {}
     },
-    'Expressionstmt': {
+    'Expression-stmt': {
         50: {
             'Expression': 51,
             'break': 52,
@@ -178,7 +178,7 @@ transition_diagrams = {
         },
         53: {}
     },
-    'Selectionstmt': {
+    'Selection-stmt': {
         54: {
             'if': 55
         },
@@ -202,7 +202,7 @@ transition_diagrams = {
         },
         61: {}
     },
-    'Iterationstmt': {
+    'Iteration-stmt': {
         62: {
             'repeat': 63
         },
@@ -223,16 +223,16 @@ transition_diagrams = {
         },
         68: {}
     },
-    'Returnstmt': {
+    'Return-stmt': {
         69: {
             'return': 70
         },
         70: {
-            'Returnstmtprime': 71
+            'Return-stmt-prime': 71
         },
         71: {}
     },
-    'Returnstmtprime': {
+    'Return-stmt-prime': {
         72: {
             ';': 74,
             'Expression': 73
@@ -244,7 +244,7 @@ transition_diagrams = {
     },
     'Expression': {
         75: {
-            'Simpleexpressionzegond': 77,
+            'Simple-expression-zegond': 77,
             'ID': 76
         },
         76: {
@@ -256,7 +256,7 @@ transition_diagrams = {
         78: {
             '=': 157,
             '[': 79,
-            'Simpleexpressionprime': 82
+            'Simple-expression-prime': 82
         },
         79: {
             'Expression': 80
@@ -288,18 +288,18 @@ transition_diagrams = {
             'Expression': 86
         }
     },
-    'Simpleexpressionzegond': {
+    'Simple-expression-zegond': {
         87: {
-            'Additiveexpressionzegond': 88
+            'Additive-expression-zegond': 88
         },
         88: {
             'C': 89
         },
         89: {}
     },
-    'Simpleexpressionprime': {
+    'Simple-expression-prime': {
         90: {
-            'Additiveexpressionprime': 91
+            'Additive-expression-prime': 91
         },
         91: {
             'C': 92
@@ -312,7 +312,7 @@ transition_diagrams = {
             'epsilon': 95
         },
         94: {
-            'Additiveexpression': 95
+            'Additive-expression': 95
         },
         95: {}
     },
@@ -323,7 +323,7 @@ transition_diagrams = {
         },
         98: {}
     },
-    'Additiveexpression': {
+    'Additive-expression': {
         99: {
             'Term': 100
         },
@@ -332,18 +332,18 @@ transition_diagrams = {
         },
         101: {}
     },
-    'Additiveexpressionprime': {
+    'Additive-expression-prime': {
         102: {
-            'Termprime': 103
+            'Term-prime': 103
         },
         103: {
             'D': 104
         },
         104: {}
     },
-    'Additiveexpressionzegond': {
+    'Additive-expression-zegond': {
         105: {
-            'Termzegond': 106
+            'Term-zegond': 106
         },
         106: {
             'D': 107
@@ -379,18 +379,18 @@ transition_diagrams = {
         },
         116: {}
     },
-    'Termprime': {
+    'Term-prime': {
         117: {
-            'Factorprime': 118
+            'Factor-prime': 118
         },
         118: {
             'G': 119
         },
         119: {}
     },
-    'Termzegond': {
+    'Term-zegond': {
         120: {
-            'Factorzegond': 121
+            'Factor-zegond': 121
         },
         121: {
             'G': 122
@@ -423,14 +423,14 @@ transition_diagrams = {
             ')': 131
         },
         130: {
-            'Varcallprime': 131
+            'Var-call-prime': 131
         },
         131: {}
     },
-    'Varcallprime': {
+    'Var-call-prime': {
         132: {
             '(': 133,
-            'Varprime': 135
+            'Var-prime': 135
         },
         133: {
             'Args': 134
@@ -440,7 +440,7 @@ transition_diagrams = {
         },
         135: {}
     },
-    'Varprime': {
+    'Var-prime': {
         136: {
             '[': 137,
             'epsilon': 139
@@ -453,7 +453,7 @@ transition_diagrams = {
         },
         139: {}
     },
-    'Factorprime': {
+    'Factor-prime': {
         140: {
             '(': 141,
             'epsilon': 143
@@ -466,7 +466,7 @@ transition_diagrams = {
         },
         143: {}
     },
-    'Factorzegond': {
+    'Factor-zegond': {
         144: {
             '(': 145,
             'NUM': 147
@@ -481,21 +481,21 @@ transition_diagrams = {
     },
     'Args': {
         148: {
-            'Arglist': 149,
+            'Arg-list': 149,
             'epsilon': 149
         },
         149: {}
     },
-    'Arglist': {
+    'Arg-list': {
         150: {
             'Expression': 151
         },
         151: {
-            'Arglistprime': 152
+            'Arg-list-prime': 152
         },
         152: {}
     },
-    'Arglistprime': {
+    'Arg-list-prime': {
         153: {
             ',': 154,
             'epsilon': 156
@@ -504,134 +504,134 @@ transition_diagrams = {
             'Expression': 155
         },
         155: {
-            'Arglistprime': 156
+            'Arg-list-prime': 156
         },
         156: {}
     }
 }
 
 
-#add epsilon to the first and terminal first
+# add epsilon to the first and terminal first
 
 
 def first(input):
-
     if input in non_terminals:
         return first_[input]
     else:
         return input
 
+
 first_ = {'Program': ['int', 'void', 'epsilon'],
-         'Declarationlist': ['int', 'void', 'epsilon'],
-         'Declaration': ['int', 'void'],
-         'Declarationinitial': ['int', 'void'],
-         'Declarationprime': [';', '[', '('],
-         'Vardeclarationprime': [';', '['],
-         'Fundeclarationprime': ['('],
-         'Typespecifier': ['int', 'void'],
-         'Params': ['int', 'void'],
-         'Paramlist': [',', 'epsilon'],
-         'Param': ['int', 'void'],
-         'Paramprime': ['[', 'epsilon'],
-         'Compoundstmt': ['{'],
-         'Statementlist': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return', 'epsilon'],
-         'Statement': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return'],
-         'Expressionstmt': ['ID', ';', 'NUM', '(', 'break'],
-         'Selectionstmt': ['if'],
-         'Iterationstmt': ['repeat'],
-         'Returnstmt': ['return'],
-         'Returnstmtprime': ['ID', ';', 'NUM', '('],
-         'Expression': ['ID', 'NUM', '('],
-         'B': ['[', '(', '=', '<', '==', '+', '-', '*', 'epsilon'],
-         'H': ['=', '<', '==', '+', '-', '*', 'epsilon'],
-         'Simpleexpressionzegond': ['NUM', '('],
-         'Simpleexpressionprime': ['(', '<', '==', '+', '-', '*', 'epsilon'],
-         'C': ['<', '==', 'epsilon'],
-         'Relop': ['<', '=='],
-         'Additiveexpression': ['ID', 'NUM', '('],
-         'Additiveexpressionprime': ['(', '+', '-', '*', 'epsilon'],
-         'Additiveexpressionzegond': ['NUM', '('],
-         'D': ['+', '-', 'epsilon'],
-         'Addop': ['+', '-'],
-         'Term': ['ID', 'NUM', '('],
-         'Termprime': ['(', '*', 'epsilon'],
-         'Termzegond': ['NUM', '('],
-         'G': ['*', 'epsilon'],
-         'Factor': ['ID', 'NUM', '('],
-         'Varcallprime': ['[', '(', 'epsilon'],
-         'Varprime': ['[', 'epsilon'],
-         'Factorprime': ['(', 'epsilon'],
-         'Factorzegond': ['NUM', '('],
-         'Args': ['ID', 'NUM', '(', 'epsilon'],
-         'Arglist': ['ID', 'NUM', '('],
-         'Arglistprime': [',', 'epsilon']}
+          'Declaration-list': ['int', 'void', 'epsilon'],
+          'Declaration': ['int', 'void'],
+          'Declaration-initial': ['int', 'void'],
+          'Declaration-prime': [';', '[', '('],
+          'Var-declaration-prime': [';', '['],
+          'Fun-declaration-prime': ['('],
+          'Type-specifier': ['int', 'void'],
+          'Params': ['int', 'void'],
+          'Param-list': [',', 'epsilon'],
+          'Param': ['int', 'void'],
+          'Param-prime': ['[', 'epsilon'],
+          'Compound-stmt': ['{'],
+          'Statement-list': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return', 'epsilon'],
+          'Statement': ['ID', ';', 'NUM', '(', '{', 'break', 'if', 'repeat', 'return'],
+          'Expression-stmt': ['ID', ';', 'NUM', '(', 'break'],
+          'Selection-stmt': ['if'],
+          'Iteration-stmt': ['repeat'],
+          'Return-stmt': ['return'],
+          'Return-stmt-prime': ['ID', ';', 'NUM', '('],
+          'Expression': ['ID', 'NUM', '('],
+          'B': ['[', '(', '=', '<', '==', '+', '-', '*', 'epsilon'],
+          'H': ['=', '<', '==', '+', '-', '*', 'epsilon'],
+          'Simple-expression-zegond': ['NUM', '('],
+          'Simple-expression-prime': ['(', '<', '==', '+', '-', '*', 'epsilon'],
+          'C': ['<', '==', 'epsilon'],
+          'Relop': ['<', '=='],
+          'Additive-expression': ['ID', 'NUM', '('],
+          'Additive-expression-prime': ['(', '+', '-', '*', 'epsilon'],
+          'Additive-expression-zegond': ['NUM', '('],
+          'D': ['+', '-', 'epsilon'],
+          'Addop': ['+', '-'],
+          'Term': ['ID', 'NUM', '('],
+          'Term-prime': ['(', '*', 'epsilon'],
+          'Term-zegond': ['NUM', '('],
+          'G': ['*', 'epsilon'],
+          'Factor': ['ID', 'NUM', '('],
+          'Var-call-prime': ['[', '(', 'epsilon'],
+          'Var-prime': ['[', 'epsilon'],
+          'Factor-prime': ['(', 'epsilon'],
+          'Factor-zegond': ['NUM', '('],
+          'Args': ['ID', 'NUM', '(', 'epsilon'],
+          'Arg-list': ['ID', 'NUM', '('],
+          'Arg-list-prime': [',', 'epsilon']}
 
 follow = {'Program': ["$"],
-          'Declarationlist': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
+          'Declaration-list': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
           'Declaration': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
-          'Declarationinitial': [';', '[', '(', ')', ','],
-          'Declarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
-          'Vardeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
-                                  '$'],
-          'Fundeclarationprime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
-                                  '$'],
-          'Typespecifier': ['ID'],
+          'Declaration-initial': [';', '[', '(', ')', ','],
+          'Declaration-prime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return', '$'],
+          'Var-declaration-prime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
+                                    '$'],
+          'Fun-declaration-prime': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'repeat', 'return',
+                                    '$'],
+          'Type-specifier': ['ID'],
           'Params': [')'],
-          'Paramlist': [')'],
+          'Param-list': [')'],
           'Param': [')', ','],
-          'Paramprime': [')', ','],
-          'Compoundstmt': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'else', 'repeat', 'until',
-                           'return', '$'],
-          'Statementlist': ['}'],
+          'Param-prime': [')', ','],
+          'Compound-stmt': ['ID', ';', 'NUM', '(', 'int', 'void', '{', '}', 'break', 'if', 'else', 'repeat', 'until',
+                            'return', '$'],
+          'Statement-list': ['}'],
           'Statement': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
-          'Expressionstmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
-          'Selectionstmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
-          'Iterationstmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
-          'Returnstmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
-          'Returnstmtprime': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
+          'Expression-stmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
+          'Selection-stmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
+          'Iteration-stmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
+          'Return-stmt': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
+          'Return-stmt-prime': ['ID', ';', 'NUM', '(', '{', '}', 'break', 'if', 'else', 'repeat', 'until', 'return'],
           'Expression': [';', ']', ')', ','],
           'B': [';', ']', ')', ','],
           'H': [';', ']', ')', ','],
-          'Simpleexpressionzegond': [';', ']', ')', ','],
-          'Simpleexpressionprime': [';', ']', ')', ','],
+          'Simple-expression-zegond': [';', ']', ')', ','],
+          'Simple-expression-prime': [';', ']', ')', ','],
           'C': [';', ']', ')', ','],
           'Relop': ['ID', 'NUM', '('],
-          'Additiveexpression': [';', ']', ')', ',', '<', '=='],
-          'Additiveexpressionprime': [';', ']', ')', ',', '<', '=='],
-          'Additiveexpressionzegond': [';', ']', ')', ',', '<', '=='],
+          'Additive-expression': [';', ']', ')', ',', '<', '=='],
+          'Additive-expression-prime': [';', ']', ')', ',', '<', '=='],
+          'Additive-expression-zegond': [';', ']', ')', ',', '<', '=='],
           'D': [';', ']', ')', ','],
           'Addop': ['ID', 'NUM', '('],
           'Term': [';', ']', ')', ',', '<', '==', '+', '-'],
-          'Termprime': [';', ']', ')', ',', '<', '==', '+', '-'],
-          'Termzegond': [';', ']', ')', ',', '<', '==', '+', '-'],
+          'Term-prime': [';', ']', ')', ',', '<', '==', '+', '-'],
+          'Term-zegond': [';', ']', ')', ',', '<', '==', '+', '-'],
           'G': [';', ']', ')', ',', '<', '==', '+', '-'],
           'Factor': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
-          'Varcallprime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
-          'Varprime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
-          'Factorprime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
-          'Factorzegond': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
+          'Var-call-prime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
+          'Var-prime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
+          'Factor-prime': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
+          'Factor-zegond': [';', ']', ')', ',', '<', '==', '+', '-', '*'],
           'Args': [')'],
-          'Arglist': [')'],
-          'Arglistprime': [')']}
+          'Arg-list': [')'],
+          'Arg-list-prime': [')']}
 
-non_terminals = ['Program', 'Declarationlist', 'Declaration', 'Declarationinitial', 'Declarationprime',
-                 'Vardeclarationprime', 'Fundeclarationprime', 'Typespecifier', 'Params', 'Paramlist', 'Param',
-                 'Paramprime', 'Compoundstmt', 'Statementlist', 'Statement', 'Expressionstmt', 'Selectionstmt',
-                 'Iterationstmt', 'Returnstmt', 'Returnstmtprime', 'Expression', 'B', 'H', 'Simpleexpressionzegond',
-                 'Simpleexpressionprime', 'C', 'Relop', 'Additiveexpression', 'Additiveexpressionprime',
-                 'Additiveexpressionzegond', 'D', 'Addop', 'Term', 'Termprime', 'Termzegond', 'G', 'Factor',
-                 'Varcallprime', 'Varprime', 'Factorprime', 'Factorzegond', 'Args', 'Arglist', 'Arglistprime']
+non_terminals = ['Program', 'Declaration-list', 'Declaration', 'Declaration-initial', 'Declaration-prime',
+                 'Var-declaration-prime', 'Fun-declaration-prime', 'Type-specifier', 'Params', 'Param-list', 'Param',
+                 'Param-prime', 'Compound-stmt', 'Statement-list', 'Statement', 'Expression-stmt', 'Selection-stmt',
+                 'Iteration-stmt', 'Return-stmt', 'Return-stmt-prime', 'Expression', 'B', 'H', 'Simple-expression-zegond',
+                 'Simple-expression-prime', 'C', 'Relop', 'Additive-expression', 'Additive-expression-prime',
+                 'Additive-expression-zegond', 'D', 'Addop', 'Term', 'Term-prime', 'Term-zegond', 'G', 'Factor',
+                 'Var-call-prime', 'Var-prime', 'Factor-prime', 'Factor-zegond', 'Args', 'Arg-list', 'Arg-list-prime']
 
 terminals = []
 
-starter_of_non_terminals = {'Program': 0, 'Declarationlist': 2, 'Declaration': 5, 'Declarationinitial': 8,
-                            'Declarationprime': 11, 'Vardeclarationprime': 13, 'Fundeclarationprime': 18,
-                            'Typespecifier': 23, 'Params': 25, 'Paramlist': 30, 'Param': 34, 'Paramprime': 37,
-                            'Compoundstmt': 40, 'Statementlist': 45, 'Statement': 48, 'Expressionstmt': 50,
-                            'Selectionstmt': 54, 'Iterationstmt': 62, 'Returnstmt': 69, 'Returnstmtprime': 72,
-                            'Expression': 75, 'B': 78, 'H': 83, 'Simpleexpressionzegond': 87,
-                            'Simpleexpressionprime': 90, 'C': 93, 'Relop': 96, 'Additiveexpression': 99,
-                            'Additiveexpressionprime': 102, 'Additiveexpressionzegond': 105, 'D': 108, 'Addop': 112,
-                            'Term': 114, 'Termprime': 117, 'Termzegond': 120, 'G': 123, 'Factor': 127,
-                            'Varcallprime': 132, 'Varprime': 136, 'Factorprime': 140, 'Factorzegond': 144,
-                            'Args': 148, 'Arglist': 150, 'Arglistprime': 153}
+starter_of_non_terminals = {'Program': 0, 'Declaration-list': 2, 'Declaration': 5, 'Declaration-initial': 8,
+                            'Declaration-prime': 11, 'Var-declaration-prime': 13, 'Fun-declaration-prime': 18,
+                            'Type-specifier': 23, 'Params': 25, 'Param-list': 30, 'Param': 34, 'Param-prime': 37,
+                            'Compound-stmt': 40, 'Statement-list': 45, 'Statement': 48, 'Expression-stmt': 50,
+                            'Selection-stmt': 54, 'Iteration-stmt': 62, 'Return-stmt': 69, 'Return-stmt-prime': 72,
+                            'Expression': 75, 'B': 78, 'H': 83, 'Simple-expression-zegond': 87,
+                            'Simple-expression-prime': 90, 'C': 93, 'Relop': 96, 'Additive-expression': 99,
+                            'Additive-expression-prime': 102, 'Additive-expression-zegond': 105, 'D': 108, 'Addop': 112,
+                            'Term': 114, 'Term-prime': 117, 'Term-zegond': 120, 'G': 123, 'Factor': 127,
+                            'Var-call-prime': 132, 'Var-prime': 136, 'Factor-prime': 140, 'Factor-zegond': 144,
+                            'Args': 148, 'Arg-list': 150, 'Arg-list-prime': 153}
