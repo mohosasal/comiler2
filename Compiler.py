@@ -8,3 +8,4 @@ if __name__ == "__main__":
     parser.diagram_transition(parser.main_node, 0, "Program")
     for pre, fill, node in RenderTree(parser.main_node):
         print("%s%s" % (pre, node.name))
+    print(parser.messages)

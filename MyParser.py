@@ -59,7 +59,8 @@ class MyParser:
                     self.token = self.get_what_we_need_from_token()
                     self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
 
-                    return
+                    #return
+                    #self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
 
 
         if rented1==False:           # epsilon handling
@@ -75,7 +76,7 @@ class MyParser:
                     if transition in td.non_terminals:
 
                         self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
-
+                        self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                     else:
                         self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
 
