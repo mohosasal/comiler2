@@ -1,7 +1,10 @@
 transition_diagrams = {
     'Program': {
         0: {
-            'Declarationlist': 1
+            'Declarationlist': 160
+        },
+        160: {
+            '$': 1
         },
         1: {}
     },
