@@ -17,7 +17,7 @@ class MyParser:
     def __init__(self ,scanner):
         self.main_node =Node("Program")
         self.scanner =scanner
-        self.token=""
+        self.token=''
         self.messages=[]
 
 
