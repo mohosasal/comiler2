@@ -55,27 +55,27 @@ keywords = ["break", "else", "if", "int", "repeat", "return", "until", "void"]
 symbol_table = keywords.copy()
 
 
-class Scanner:
+class MyFuckingScanner:
+    # def __int__(self, file_to_read):
+    #     self.index = 0
+    #     self.str_line = 1
+    #     self.state = 0
+    #     f = open(file_to_read, "r")
+    #     self.file = f.read().split("\n")
+    #     self.tokens = dict()
 
-
-    def __int__(self,file_to_read):
-        self.index=0
-        self.str_line=1
-        self.state=0
+    def __init__(self, file_to_read):
+        self.index = 0
+        self.str_line = 0
+        self.state = 0
         f = open(file_to_read, "r")
         self.file = f.read().split("\n")
         self.tokens = dict()
-
-
-
-
-
-
+        self.str = self.file[self.str_line]
     def dfa_transition(state_number, transition):
         transition_index = action_to_action_number[transition]
         new_state = dfa_matrix[state_number][transition_index]
         return new_state
-
 
     def get_next_token(self):
         digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -87,12 +87,17 @@ class Scanner:
         symbols = [";", ":", ",", "[", "]", "(", ")", "{", "}", "+", "-", "<"]
         whitespace_ascii_codes = [32, 10, 13, 9, 11, 12]
         next_index = self.index
+        if next_index >= len(self.str):
+            self.index = 0
+            self.str_line += 1
+            self.str = self.file[self.str_line]
+            return self.get_next_token()
         while True:
-            if state_number_to_state[state][1] != "non_terminal":
+            if state_number_to_state[self.state][1] != "non_terminal":
                 break
-            if next_index == len(self.str_line):
+            if next_index == len(self.str):
                 break
-            character = self.str_line[next_index]
+            character = self.str[next_index]
             if character in digits:
                 action = "digit"
             elif character in alphabet:
@@ -109,10 +114,10 @@ class Scanner:
                 action = "symbol"
             else:
                 action = "invalid"
-            state = Scanner.dfa_transition(state, action)
+            self.state = MyFuckingScanner.dfa_transition(self.state, action)
             next_index += 1
-        state_string = state_number_to_state[state][0]
-        state_type = state_number_to_state[state][1]
+        state_string = state_number_to_state[self.state][0]
+        state_type = state_number_to_state[self.state][1]
 
         if state_type == "error":
             if state_string == "invalid comment":
@@ -120,7 +125,7 @@ class Scanner:
                 token_string = 'Invalid input'
             else:
                 token_string = state_string
-            print(token_string, self.str_line[self.index:next_index])
+            print(token_string, self.str[self.index:next_index])
         elif state_type == "non_terminal":
             token_string = 'Unclosed comment'
         elif state_type == "terminal":
@@ -128,7 +133,9 @@ class Scanner:
                 next_index -= 1
                 token_string = state_string
             elif state_string == "valid_comment" or state_string == "whitespace":
-                return Scanner.get_next_token(next_index, self.str_line, 0)
+                self.index = next_index
+                self.state = 0
+                return self.get_next_token()
             elif state_string == "SYMBOL":
                 token_string = state_string
             elif state_string == "symbol_with_lookahead":
@@ -136,20 +143,23 @@ class Scanner:
                 token_string = "SYMBOL"
             elif state_string == "valid_variable":
                 next_index -= 1
-                if self.str_line[self.index:next_index] in keywords:
+                if self.str[self.index:next_index] in keywords:
                     token_string = "KEYWORD"
                 else:
                     token_string = "ID"
-                if self.str_line[self.index:next_index] not in symbol_table:
-                    symbol_table.append(self.str_line[self.index:next_index])
+                if self.str[self.index:next_index] not in symbol_table:
+                    symbol_table.append(self.str[self.index:next_index])
             else:
                 token_string = ""
         if state_type == "non_terminal":
             self.state = 12
-        else: self.state = 0
-        if next_index >= len(self.str_line) - 1:
+        else:
+            self.state = 0
+        saved_str = self.str[self.index:next_index]
+        if next_index >= len(self.str):
             self.index = 0
             self.str_line += 1
+            self.str = self.file[self.str_line]
         else:
             self.index = next_index
-        return next_index, (token_string, self.str_line[self.index:next_index])
+        return next_index, (token_string, saved_str)

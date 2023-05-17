@@ -1,21 +1,49 @@
-import Scanner
-import Parser
+from MyFuckingScanner import MyFuckingScanner
+from MyParser import MyParser
 
+if __name__ == "__main__":
+    scanner = MyFuckingScanner("input.txt")
+    parser = MyParser(scanner)
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
+    print(scanner.get_next_token())
 
-class Compiler:
-
-
-
-
-
-
-
-    if __name__ == "__main__":
-
-        scanner=Scanner("input.txt")
-        parser=Parser(scanner)
-
-        parser.diagram_transition(parser.main_node,"Program")
-
-
-
+    # parser.diagram_transition(parser.main_node, "Program")

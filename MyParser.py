@@ -1,7 +1,7 @@
 
 #################################### imports
 
-import Scanner
+import MyFuckingScanner
 from anytree import Node, RenderTree
 import td
 
@@ -12,7 +12,7 @@ import td
 
 
 
-class Parser:
+class MyParser:
 
     def __init__(self ,scanner):
         self.main_node =Node("Program")
@@ -27,7 +27,7 @@ class Parser:
     def diagram_transition(self,this_node,state,line):
 
         rented1 = False
-        rented2= False
+        rented2 = False
 
 
 
