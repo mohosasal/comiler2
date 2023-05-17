@@ -1,7 +1,7 @@
 transition_diagrams = {
     'Program': {
         0: {
-            'Declarationlist': '1'
+            'Declarationlist': 1
         },
         1: {}
     },
@@ -26,7 +26,7 @@ transition_diagrams = {
     },
     'Declarationinitial': {
         8: {
-            'Typepsprecifier': 9
+            'Typespecifier': 9
         },
         9: {
             'ID': 10
