@@ -19,7 +19,7 @@ if __name__ == "__main__":
     if len(parser.messages) == 0:
         f.write('There is no syntax error.')
     else:
-        f.write(parser.messages)
+        f.write('\n'.join(parser.messages))
     f.close()
 
 
