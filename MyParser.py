@@ -57,6 +57,7 @@ class MyParser:
                     that_node = Node(self.all_token[1], parent=this_node)
                     self.all_token = self.scanner.get_next_token()
                     self.token = self.get_what_we_need_from_token()
+                    self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
 
                     return
 

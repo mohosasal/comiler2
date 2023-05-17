@@ -251,7 +251,7 @@ transition_diagrams = {
     },
     'B': {
         78: {
-            'Expression': 82,
+            '=': 157,
             '[': 79,
             'Simpleexpressionprime': 82
         },
@@ -264,11 +264,14 @@ transition_diagrams = {
         81: {
             'H': 82
         },
-        82: {}
+        82: {},
+        157: {
+            'Expression': 82
+        }
     },
     'H': {
         83: {
-            'Expression': 86,
+            '=': 158,
             'G': 84
         },
         84: {
@@ -277,7 +280,10 @@ transition_diagrams = {
         85: {
             'C': 86
         },
-        86: {}
+        86: {},
+        158: {
+            'Expression': 86
+        }
     },
     'Simpleexpressionzegond': {
         87: {
