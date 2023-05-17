@@ -34,7 +34,6 @@ class MyParser:
 
 
         ##########the state of finals
-        print(state,line)
 
         if len(td.transition_diagrams[line][state])==0:
             return
