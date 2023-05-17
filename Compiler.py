@@ -9,3 +9,8 @@ if __name__ == "__main__":
     for pre, fill, node in RenderTree(parser.main_node):
         print("%s%s" % (pre, node.name))
     print(parser.messages)
+
+
+
+
+    # handling outputs

@@ -34,6 +34,7 @@ class MyParser:
 
 
         ##########the state of finals
+        print(state,line)
 
         if len(td.transition_diagrams[line][state])==0:
             return
@@ -46,6 +47,7 @@ class MyParser:
             #checking for transtitions first without epsilon
             if self.token in td.first(transition) :
                 rented1 = True
+                rented2= True
 
 
                 if transition in td.non_terminals:
@@ -62,18 +64,20 @@ class MyParser:
 
 
         if rented1==False:           # epsilon handling
-
+            
             for transition in td.transition_diagrams[line][state].keys():
 
                 if "epsilon" in td.first(transition):
 
                     rented2 = True
 
+
                     that_node = Node(transition, parent=this_node)
 
                     if transition in td.non_terminals:
 
                         self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
+                        self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
 
                     else:
                         self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
