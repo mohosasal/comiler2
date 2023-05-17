@@ -35,7 +35,7 @@ transition_diagrams = {
     },
     'Declarationprime': {
         11: {
-            'Fundecalrationprime': 12,
+            'Fundeclarationprime': 12,
             'Vardeclarationprime': 12
         },
         12: {}

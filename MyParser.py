@@ -99,7 +99,7 @@ class MyParser:
 
                 #missing line
 
-                error_message="missing"+" "+line
+                error_message = "missing"+" "+line
                 self.messages.append(error_message)
                 return
 
