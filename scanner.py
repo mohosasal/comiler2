@@ -72,6 +72,8 @@ class MyFuckingScanner:
         self.file = f.read().split("\n")
         self.tokens = dict()
         self.str = self.file[self.str_line]
+        for i in range(len(self.file)):
+            self.file[i] += ' '
     def dfa_transition(state_number, transition):
         transition_index = action_to_action_number[transition]
         new_state = dfa_matrix[state_number][transition_index]
@@ -130,6 +132,7 @@ class MyFuckingScanner:
                 token_string = state_string
             print(token_string, self.str[self.index:next_index])
         elif state_type == "non_terminal":
+            print(self.state)
             token_string = 'Unclosed comment'
         elif state_type == "terminal":
             if state_string == "NUM":
@@ -166,4 +169,5 @@ class MyFuckingScanner:
                 self.str = self.file[self.str_line]
         else:
             self.index = next_index
+        # print((token_string, saved_str))
         return next_index, (token_string, saved_str)

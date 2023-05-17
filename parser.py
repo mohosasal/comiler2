@@ -75,7 +75,16 @@ class MyParser:
 
 
         elif rented2 == False:  # error handling
-
+            print('dgdfgf')
+            non_terminal_exist = False
+            for trans in td.transition_diagrams[line][state].keys():
+                if trans in td.non_terminals:
+                    non_terminal_exist = True
+            if not non_terminal_exist:
+                error_message = 'missing ' + self.token
+                self.messages.append(error_message)
+            transition = td.transition_diagrams[line][state].keys()[0]
+            self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
             if self.token not in td.follow[line]:
 
                 # illegal token message
@@ -90,6 +99,7 @@ class MyParser:
                 self.diagram_transition(this_node, td.starter_of_non_terminals[line], line)
 
             else:
+
 
                 # missing line
 
