@@ -79,6 +79,8 @@ class MyFuckingScanner:
         new_state = dfa_matrix[state_number][transition_index]
         return new_state
 
+    def get_str_line(self):
+        return self.str_line + 1
     def get_next_token(self):
         if self.str_line >= len(self.file):
             return 0, ('END', '$')

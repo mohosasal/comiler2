@@ -65,8 +65,11 @@ class MyParser:
             x=td.transition_diagrams[line][state].keys()
             
             for transition in x :
-
-                if "epsilon" in td.first(transition) and self.token in td.follow[line]:
+                if transition == 'epsilon':
+                    to_check_follow = line
+                else:
+                    to_check_follow = transition
+                if "epsilon" in td.first(transition) and self.token in td.follow[to_check_follow]:
                     rented2 = True
                     that_node = Node(transition, parent=this_node)
 
@@ -87,7 +90,7 @@ class MyParser:
 
 
             if self.token=="$":
-                error="Unexpected EOF"
+                error='#' + str(self.scanner.get_str_line() - 1) + ' : syntax error, ' + "Unexpected EOF"
                 self.messages.append(error)
                 self.EOF=True
                 return
@@ -98,7 +101,7 @@ class MyParser:
                 if trans in td.non_terminals:
                     non_terminal_exist = True
             if not non_terminal_exist:
-                error_message = 'missing ' + transition
+                error_message = '#' + str(self.scanner.get_str_line()) + ' : syntax error, ' + 'missing ' + transition
                 self.messages.append(error_message)
                 self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                 if self.EOF == True: return
@@ -107,7 +110,7 @@ class MyParser:
 
                 # illegal token message
 
-                error_message = "illegal" + " " + self.token
+                error_message = '#' + str(self.scanner.get_str_line()) + ' : syntax error, ' + "illegal" + " " + self.token
                 self.messages.append(error_message)
 
                 # start over from this line
@@ -121,7 +124,7 @@ class MyParser:
 
                 # missing line
 
-                error_message = "missing" + " " + transition
+                error_message = '#' + str(self.scanner.get_str_line()) + ' : syntax error, ' + "missing" + " " + transition
                 self.messages.append(error_message)
                 self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                 if self.EOF == True: return

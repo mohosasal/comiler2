@@ -1,5 +1,5 @@
 from scanner import MyFuckingScanner
-from My_parser import MyParser
+from parser import MyParser
 from anytree import Node, RenderTree
 
 if __name__ == "__main__":
