@@ -1,3 +1,4 @@
+import scanner
 
 ss = []
 pb = []
@@ -25,7 +26,7 @@ class Code_gen:
             pb[ss[top]] = '(JP,' + str(i) + ',,)'
     @staticmethod
     def pushid(token):
-        pass
+        address =
 
     @staticmethod
     def assign():

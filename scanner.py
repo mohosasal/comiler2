@@ -55,6 +55,7 @@ keywords = {"break": -1, "else": -1, "if": -1, "int": -1, "repeat": -1, "return"
 symbol_table = keywords.copy()
 
 
+
 class MyFuckingScanner:
     # def __int__(self, file_to_read):
     #     self.index = 0
@@ -74,6 +75,7 @@ class MyFuckingScanner:
         self.str = self.file[self.str_line]
         for i in range(len(self.file)):
             self.file[i] += ' '
+        self.address = 100
     def dfa_transition(state_number, transition):
         transition_index = action_to_action_number[transition]
         new_state = dfa_matrix[state_number][transition_index]
@@ -156,7 +158,8 @@ class MyFuckingScanner:
                 else:
                     token_string = "ID"
                 if self.str[self.index:next_index] not in symbol_table:
-                    symbol_table.append(self.str[self.index:next_index])
+                    symbol_table[self.str[self.index:next_index]] = self.address
+                    self.address += 4
             else:
                 token_string = ""
         if state_type == "non_terminal":
