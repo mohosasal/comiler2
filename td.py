@@ -1,3 +1,4 @@
+
 transition_diagrams = {
     'Program': {
         0: {
@@ -140,7 +141,7 @@ transition_diagrams = {
             'Statement-list': 43
         },
         43: {
-            '}': 44
+            '}': ('-',44,'#assign')
         },
         44: {}
     },
@@ -245,7 +246,7 @@ transition_diagrams = {
     'Expression': {
         75: {
             'Simple-expression-zegond': 77,
-            'ID': 76
+            'ID': ('#pid',76,'-')
         },
         76: {
             'B': 77
@@ -254,12 +255,12 @@ transition_diagrams = {
     },
     'B': {
         78: {
-            '=': 157,
+            '=':157,
             '[': 79,
             'Simple-expression-prime': 82
         },
         79: {
-            'Expression': 80
+            'Expression': ('-',80,'#assign')
         },
         80: {
             ']': 81
@@ -359,13 +360,13 @@ transition_diagrams = {
             'Term': 110
         },
         110: {
-            'D': 111
+            'D': ('-',111,'#addop')
         },
         111: {}
     },
     'Addop': {
         112: {
-            '+': 113,
+            '+': ('#plus',113,'-'),
             '-': 113
         },
         113: {}
@@ -413,7 +414,7 @@ transition_diagrams = {
     'Factor': {
         127: {
             '(': 128,
-            'ID': 130,
+            'ID': ('#pid',130,'-'),
             'NUM': 131
         },
         128: {

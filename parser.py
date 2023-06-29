@@ -3,6 +3,7 @@
 import scanner
 from anytree import Node, RenderTree
 import td
+import code_gen
 
 
 #################################### main class
@@ -16,8 +17,8 @@ class MyParser:
         self.all_token = self.scanner.get_next_token()
         self.token = self.get_what_we_need_from_token()
         self.messages = []
-        self.EOF=False
-
+        self.EOF = False
+        self.code_gen = code_gen.Code_gen()
     def get_what_we_need_from_token(self):
         if self.all_token[1][0] == 'NUM' or self.all_token[1][0] == 'ID':
             return self.all_token[1][0]
@@ -30,7 +31,7 @@ class MyParser:
 
         ##########the state of finals
 
-        if len(td.transition_diagrams[line][state]) == 0 or self.EOF==True:
+        if len(td.transition_diagrams[line][state]) == 0 or self.EOF == True:
             return
 
         ##########other states
@@ -44,7 +45,12 @@ class MyParser:
 
                 if transition in td.non_terminals:
                     that_node = Node(transition, parent=this_node)
-                    self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
+                    if len(td.transition_diagrams[line][state][transition]) == 3:
+                        self.code_gen.code_generator(td.transition_diagrams[line][state][transition][0], self.token)
+                        self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
+                        self.code_gen.code_generator(td.transition_diagrams[line][state][transition][2], self.token)
+                    else:
+                        self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
                     if self.EOF == True: return
                     self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                     if self.EOF == True: return
@@ -54,17 +60,24 @@ class MyParser:
                         Node('$', parent=this_node)
                     else:
                         Node(self.all_token[1], parent=this_node)
-                    self.all_token = self.scanner.get_next_token()
-                    self.token = self.get_what_we_need_from_token()
-                    self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
+                    if len(td.transition_diagrams[line][state][transition]) == 3:
+                        self.code_gen.code_generator(td.transition_diagrams[line][state][transition][0], self.token)
+                        self.all_token = self.scanner.get_next_token()
+                        self.token = self.get_what_we_need_from_token()
+                        self.diagram_transition(this_node, td.starter_of_non_terminals[transition], line)
+                        self.code_gen.code_generator(td.transition_diagrams[line][state][transition][2], self.token)
+                    else:
+                        self.all_token = self.scanner.get_next_token()
+                        self.token = self.get_what_we_need_from_token()
+                        self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                     if self.EOF == True: return
                 break
-        x=[]
-        if rented1 == False:  # epsilon handling
+        x = []
+        if not rented1:  # epsilon handling
 
-            x=td.transition_diagrams[line][state].keys()
-            
-            for transition in x :
+            x = td.transition_diagrams[line][state].keys()
+
+            for transition in x:
                 if transition == 'epsilon':
                     to_check_follow = line
                 else:
@@ -75,24 +88,32 @@ class MyParser:
 
                     if transition in td.non_terminals:
 
-                        self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
-                        if self.EOF==True : return
+                        if len(td.transition_diagrams[line][state][transition]) == 3:
+                            self.code_gen.code_generator(td.transition_diagrams[line][state][transition][0], self.token)
+                            self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
+                            self.code_gen.code_generator(td.transition_diagrams[line][state][transition][2], self.token)
+                        else:
+                            self.diagram_transition(that_node, td.starter_of_non_terminals[transition], transition)
+                        if self.EOF == True: return
                         self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
-                        if self.EOF==True : return
+                        if self.EOF == True: return
 
                     else:
-                        self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
+                        if len(td.transition_diagrams[line][state][transition]) == 3:
+                            self.code_gen.code_generator(td.transition_diagrams[line][state][transition][0], self.token)
+                            self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
+                            self.code_gen.code_generator(td.transition_diagrams[line][state][transition][2], self.token)
+                        else:
+                            self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                         if self.EOF == True: return
                     break
 
-
         if rented2 == False:  # error handling
 
-
-            if self.token=="$":
-                error='#' + str(self.scanner.get_str_line() - 1) + ' : syntax error, ' + "Unexpected EOF"
+            if self.token == "$":
+                error = '#' + str(self.scanner.get_str_line() - 1) + ' : syntax error, ' + "Unexpected EOF"
                 self.messages.append(error)
-                self.EOF=True
+                self.EOF = True
                 return
 
             transition = list(td.transition_diagrams[line][state].keys())[0]
@@ -110,7 +131,8 @@ class MyParser:
 
                 # illegal token message
 
-                error_message = '#' + str(self.scanner.get_str_line()) + ' : syntax error, ' + "illegal" + " " + self.token
+                error_message = '#' + str(
+                    self.scanner.get_str_line()) + ' : syntax error, ' + "illegal" + " " + self.token
                 self.messages.append(error_message)
 
                 # start over from this line
@@ -124,11 +146,11 @@ class MyParser:
 
                 # missing line
 
-                error_message = '#' + str(self.scanner.get_str_line()) + ' : syntax error, ' + "missing" + " " + transition
+                error_message = '#' + str(
+                    self.scanner.get_str_line()) + ' : syntax error, ' + "missing" + " " + transition
                 self.messages.append(error_message)
                 self.diagram_transition(this_node, td.transition_diagrams[line][state][transition], line)
                 if self.EOF == True: return
-
 
                 # exit this line
 

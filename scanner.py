@@ -51,7 +51,7 @@ dfa_matrix = [[4, 1, 10, 11, 13, 9, 8, 5],
               [16, 16, 16, 16, 16, 16, 16, 16],
               [17, 17, 17, 17, 17, 17, 17, 17]]
 
-keywords = ["break", "else", "if", "int", "repeat", "return", "until", "void"]
+keywords = {"break": -1, "else": -1, "if": -1, "int": -1, "repeat": -1, "return": -1, "until": -1, "void": -1}
 symbol_table = keywords.copy()
 
 
