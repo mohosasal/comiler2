@@ -1,11 +1,12 @@
+import code_gen
 from scanner import MyFuckingScanner
 from parser import MyParser
 from anytree import Node, RenderTree
-
+from code_gen import *
 if __name__ == "__main__":
     scanner = MyFuckingScanner("input.txt")
-
-    parser = MyParser(scanner)
+    code_gen=Code_gen(scanner)
+    parser = MyParser(scanner,code_gen)
     parser.diagram_transition(parser.main_node, 0, "Program")
     output = ''
     for pre, fill, node in RenderTree(parser.main_node):
@@ -22,6 +23,16 @@ if __name__ == "__main__":
     else:
         f.write('\n'.join(parser.messages))
     f.close()
+
+    output=""
+    for i in range(len(code_gen.pb)):
+        output+=(code_gen.pb[i])+"\n"
+
+    f = open('output.txt', 'w', encoding="utf-8")
+    f.write(output)
+    f.close()
+
+
 
 
 

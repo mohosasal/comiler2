@@ -11,14 +11,14 @@ import code_gen
 
 class MyParser:
 
-    def __init__(self, scanner):
+    def __init__(self, scanner,code_gen):
         self.main_node = Node("Program")
         self.scanner = scanner
         self.all_token = self.scanner.get_next_token()
         self.token = self.get_what_we_need_from_token()
         self.messages = []
         self.EOF = False
-        self.code_gen = code_gen.Code_gen()
+        self.code_gen = code_gen
     def get_what_we_need_from_token(self):
         if self.all_token[1][0] == 'NUM' or self.all_token[1][0] == 'ID':
             return self.all_token[1][0]
